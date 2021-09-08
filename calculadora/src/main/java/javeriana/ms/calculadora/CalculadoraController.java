@@ -21,8 +21,21 @@ public class CalculadoraController {
     
     @GetMapping("/calculadora/suma")
     private String calculadoraSuma(@RequestParam int a , @RequestParam int b){
-        String response = restTemplate.getForObject("http://sumador/suma?a={a}&b={b}", String.class, a,b);
-        return response;
+        return restTemplate.getForObject("http://sumador/suma?a={a}&b={b}", String.class, a,b);
+    }
 
+    @GetMapping("/calculadora/minus")
+    private String calculadoraMinus(@RequestParam int a , @RequestParam int b){
+        return restTemplate.getForObject("http://multiplier/multiply?a={a}&b={b}", String.class, a,b);
+    }
+
+    @GetMapping("/calculadora/suma")
+    private String calculadoraMultiplication(@RequestParam int a , @RequestParam int b){
+        return restTemplate.getForObject("http://minus/minus?a={a}&b={b}", String.class, a,b);
+    }
+
+    @GetMapping("/calculadora/division")
+    private String calculadoraDivision(@RequestParam int a , @RequestParam int b){
+        return restTemplate.getForObject("http://divisor/division?a={a}&b={b}", String.class, a,b);
     }
 }
