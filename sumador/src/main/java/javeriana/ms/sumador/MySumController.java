@@ -1,5 +1,7 @@
 package javeriana.ms.sumador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +14,21 @@ public class MySumController {
     @Autowired
     Environment environment;
 
+    @Autowired
+    MongoDB mongoDB;
+
     @GetMapping("/suma")
-    public String sum( @RequestParam int a ,  @RequestParam int b){
+    public String sum( @RequestParam int a ,  @RequestParam int b, @RequestParam String user){
         String port = environment.getProperty("local.server.port");
-        String response = "Resultado:" + String.valueOf(a+b) + " Respuesta originada desde: " + port;
+        mongoDB.save(user, "sum");
+        String response = "Resultado:" + String.valueOf(a + b) + " Respuesta originada desde: " + port;
         return response;
     }
-    
+    /*
+    @GetMapping("/logs")
+    public List<Log> sumLogs(){
+        String port = environment.getProperty("local.server.port");
+        return mongoDB.getDocuments("sum");
+    }
+    */
 }
