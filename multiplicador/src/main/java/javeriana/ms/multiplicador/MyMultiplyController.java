@@ -1,6 +1,4 @@
-package javeriana.ms.sumador;
-
-import java.util.List;
+package javeriana.ms.multiplicador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -9,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MySumController {
+public class MyMultiplyController {
 
     @Autowired
     Environment environment;
@@ -17,18 +15,16 @@ public class MySumController {
     @Autowired
     MongoDB mongoDB;
 
-    @GetMapping("/suma")
-    public String sum( @RequestParam int a ,  @RequestParam int b, @RequestParam String user){
+    @GetMapping("/multiply")
+    public String multiply( @RequestParam int a ,  @RequestParam int b, @RequestParam String user){
         String port = environment.getProperty("local.server.port");
-        mongoDB.save(user, "sum");
-        String response = "Resultado:" + String.valueOf(a + b) + " Respuesta originada desde: " + port;
-        return response;
+        mongoDB.save(user, "multiply");
+        return "Resultado: " + String.valueOf(a * b) + " Respuesta originada desde: " + port;
     }
     
     @GetMapping("/logs")
-    public ResponseLog sumLogs(){
+    public ResponseLog minusLogs(){
         String port = environment.getProperty("local.server.port");
-        return mongoDB.getDocuments("sum");
+        return mongoDB.getDocuments("multiply");
     }
-    
 }

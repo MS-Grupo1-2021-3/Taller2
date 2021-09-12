@@ -1,17 +1,15 @@
-package javeriana.ms.calculadora;
+package javeriana.ms.multiplicador;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-//@RibbonClient(name="calculadora", configuration = RibbonConfiguration.class)
-public class CalculadoraApplication {
+public class MultiplicadorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CalculadoraApplication.class, args);
+		SpringApplication.run(MultiplicadorApplication.class, args);
 	}
 
 }
