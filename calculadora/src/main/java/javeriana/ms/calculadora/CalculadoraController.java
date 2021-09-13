@@ -1,5 +1,6 @@
 package javeriana.ms.calculadora;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,11 +46,25 @@ public class CalculadoraController {
     }
 
     @GetMapping("/calculadora/logs")
-    public Map<String, ResponseLog> getLogs(){
-        Map<String, ResponseLog> operationsLogs = new HashMap<>();
-        for (String operation : this.operations) {
-            operationsLogs.put(operation, restTemplate.getForObject("http://" + operation + "/logs", ResponseLog.class));
-        }
-        return operationsLogs;
+    public ResponseLog getLogs(){
+        List<Log> logs = new ArrayList<>();
+        Log lg = new Log("+", "");
+        logs.add(lg);
+        ResponseLog log = restTemplate.getForObject("http://sumador/logs", ResponseLog.class);
+        logs.addAll(log.getList());
+        lg = new Log("-", "");
+        logs.add(lg);
+        log = restTemplate.getForObject("http://resta/logs", ResponseLog.class);
+        logs.addAll(log.getList());
+        lg = new Log("*", "");
+        logs.add(lg);
+        log = restTemplate.getForObject("http://multiplicador/logs", ResponseLog.class);
+        logs.addAll(log.getList());
+        lg = new Log("/", "");
+        logs.add(lg);
+        log = restTemplate.getForObject("http://divisor/logs", ResponseLog.class);
+        logs.addAll(log.getList());
+        log.setList(logs);
+        return log;
     }
 }
