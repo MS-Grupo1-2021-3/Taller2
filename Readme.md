@@ -2,6 +2,8 @@
 
 ## Parte 1 - REST
 
+En la parte 1 para el manejo de archivos utilizamos un archivo de texto plano
+
 ### Instalación
 
 Para correr e instalar las dependencias de proyecto se debe dirigir a la carpeta parte1 y ejecutar los siguientes comandos
@@ -44,6 +46,10 @@ curl -X POST -H "Content-type: application/json" -d '{"ID": "11","origen": "colo
 ```
 
 ## Parte 2 - Spring Cloud
+
+Para la parte 2 usumos Mongo DB para el manejo de los datos, el cual instalamos con el siguiente tutorial
+
+[Instalar MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
 ### Instalación
 
