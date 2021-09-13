@@ -49,19 +49,19 @@ curl -X POST -H "Content-type: application/json" -d '{"ID": "11","origen": "colo
 
 Para correr estos proyectos se debe dirigir a cada una de las carpetas correspondientes siguiendo los siguientes pasos:
 
-1. ####Correr el Eureka Server
+1. Correr el Eureka Server
  Dirigirse a la carpeta de eurekaserver y ejecutar lso siguientes comandos:
 ```bash
 mvn clean install
 mvn spring-boot:run
 ```
-2. ####Correr la calculadora
+2. Correr la calculadora
 Dirigirse a la carpeta de calculadora y ejecutar los siguientes comandos:
 ```bash
 mvn clean install
 mvn spring-boot:run
 ```
-3. ####Correr cada uno de los servicios de la calculadora
+3. Correr cada uno de los servicios de la calculadora
 En este caso se debe ir a cada una de las carpetas de los microservicios (sumador,resta,multiplicador, divisor) y ejecutar los siguientes comandos:
 ```bash
 mvn clean install
